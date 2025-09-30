@@ -48,7 +48,7 @@ FoamFile
 
 // from TJunction, require running createZones, with its own dictionary:
 #includeFunc patchFlowRate(name=flowrate_inlet,patch=inlet)
-//#includeFunc faceZoneFlowRate(name=flowrate_nearOutlet,faceZone=nearOutlet)
+#includeFunc faceZoneFlowRate(name=flowrate_nearOutlet,faceZone=nearOutlet)
 
 // from T3A:
 #includeFunc wallShearStress

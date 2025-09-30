@@ -14,18 +14,12 @@ FoamFile
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-fz1
+nearOutlet
 {
-    type        surface;
-    surface     triSurface;
-    file        "surface1.obj";
+    type    plane;
+    point   (0.2 0 0);
+    normal  (1 0 0);
 }
 
-fz2
-{
-    type        surface;
-    surface     triSurface;
-    file        "surface2.obj";
-}
 
 // ************************************************************************* //
