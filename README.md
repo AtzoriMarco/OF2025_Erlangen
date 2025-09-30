@@ -1,19 +1,17 @@
 # OF2025_Erlangen
 Material for openfoam tutorial, LSTM, Erlangen, 7-10 October 2025.
 
-Programm:
+**Note:** this README contains a set of instructions and the case studies. Each case study is added **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in different location than this repository. 
 
-Tuesday, Oct 7, 9-13: Introduction, Methods, Code, Interface to OpenFOAM, simple meshing, installation, first case.
+## Programm:
+* Tuesday, Oct 7, 9-13: Introduction, Methods, Code, Interface to OpenFOAM, simple meshing, installation, first case.
+* Wednesday, Oct 8, 9-13: Incompressible flow, "running" (?). postprocessing, statistics, running cases on a cluster, including CPU and GPU version, profiling.
+* Thursday, Oct 9-13: Including more complex physics: temperature, free surfaces, and particles. 
+* Friday, Oct 10: discussions and some particular cases.
 
-Wednesday, Oct 8, 9-13: Incompressible flow, "running" (?). postprocessing, statistics, running cases on a cluster, including CPU and GPU version, profiling.
+## Starting point
 
-Thursday, Oct 9-13: Including more complex physics: temperature, free surfaces, and particles. 
-
-Friday, Oct 10: discussions and some particular cases.
-
-## Prerequisite
-
-OF13 installed, installation instruction at:
+OF13 installed, installation instruction at: ...
 
 Environmental variables are loaded (for instance, adding the following string to the .bashrc file). 
 
@@ -21,7 +19,15 @@ Environmental variables are loaded (for instance, adding the following string to
 alias of13=". /opt/openfoam13/etc/bashrc"
 ```
 
-A generic idea about how a terminal works, be confortable with: 
+A generic idea about how a terminal works, be confortable with standard commands: 
+```
+cd
+mkdir
+rm
+rm -rf 
+cat 
+grep
+```
 
 ## Step 0
 
@@ -66,13 +72,13 @@ grep -r '#includeFunc'
 ```
 
 Integrate the additional post-processing options, for example:
-* 
+* change name of function output
 * 
 * 
 * 
 * 
 
-Also interesting: 
+Also interesting, for other applications: 
 * *forceCoeffs*, from *motorBike*
 * 
 
