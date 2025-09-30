@@ -21,6 +21,8 @@ Environmental variables are loaded (for instance, adding the following string to
 alias of13=". /opt/openfoam13/etc/bashrc"
 ```
 
+A generic idea about how a terminal works, be confortable with: 
+
 ## Step 0
 
 Our first tutorial, the classic (lid-driven) cavity with the legacy solver *icoFoam*. 
@@ -55,7 +57,25 @@ cp -r /opt/openfoam13/tutorials/incompressibleFluid/pitzDaily .
 ./Allrun
 ```
 
-2. we can try to extend the postprocessing to extract more informations.
+2. we can try to extend the post processing to extract more informations. Let's check the tutorials folder for incompressible flows, and see examples of other available functions: 
+
+```
+tut
+cd incompressibleFluid/
+grep -r '#includeFunc'
+```
+
+Integrate the additional post-processing options, for example:
+* 
+* 
+* 
+* 
+* 
+
+Also interesting: 
+* *forceCoeffs*, from *motorBike*
+* 
+
 
 
 3. 
