@@ -7,7 +7,7 @@ Material for openfoam tutorial, LSTM, Erlangen, 7-10 October 2025.
 * Thursday, Oct 9-13: Including more complex physics: temperature, free surfaces, and particles. 
 * Friday, Oct 10: discussions and some particular cases.
 
-## Prerequists
+## Prerequisites
 
 * A Linux environtment, with the openFOAM installed. If you do not have experience with Linux, do not worry, I will provide a introducion that covers what is required for this tutorial. The best way to follow step by step is using a virtual machine (such as [VMware](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion) of [VirtualBox](https://www.virtualbox.org/)), with the lastest [Ubuntu](https://ubuntu.com/download/desktop) distrubution installed. A virtual machine is installed as a regular program, it then requires to identify the same image of the operative system that you would use to install it. **Dual booting or a change of operative system is not required nor advised to follow the course**.
 
