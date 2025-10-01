@@ -24,7 +24,7 @@ sudo add-apt-repository http://dl.openfoam.org/ubuntu
 sudo apt update
 sudo apt -y install openfoam13
 ```
-I will comment the section "User configuration" in my introduction.
+I will comment the section "User configuration" of the installation instructions in my introduction.
 
 
 ## Let's start
