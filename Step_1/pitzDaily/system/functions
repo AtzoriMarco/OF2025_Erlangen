@@ -51,9 +51,10 @@ FoamFile
 #includeFunc faceZoneFlowRate(name=flowrate_nearOutlet,faceZone=nearOutlet)
 
 // from T3A:
-#includeFunc wallShearStress
+#includeFunc wallShearStress(executeAtStart=no)
 #includeFunc graphUniform
 (
+    executeAtStart=no
     name=wallShearStressGraph,
     start=(0 -0.0254 0),
     end=(0.206 -0.0254 0),
@@ -62,8 +63,8 @@ FoamFile
     wallShearStress
 )
 
-// and it works for fields that are added
-#includeFunc patchSurface(name=surface_wallShearStress, patch=lowerWall, fields=(wallShearStress))
+// and it works for fields that are added with other functions!
+#includeFunc patchSurface(executeAtStart=no,name=surface_wallShearStress, patch=lowerWall, fields=(wallShearStress))
 
 
 // ************************************************************************* //
