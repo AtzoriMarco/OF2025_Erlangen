@@ -1,7 +1,9 @@
 # OF2025_Erlangen
 Material for openfoam tutorial, LSTM, Erlangen, 7-10 October 2025.
 
-**Note:** this README contains a set of instructions and the case studies. Each case study is added **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in different location than this repository. 
+**Note:** this README contains a set of instructions and the case studies. Each case study is included as it is **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in different location than this repository. 
+
+**Note:** tutorials are intended to illustrate some of the capability of the code; requirements to assure imulations yield realistic results, such as those on resolution, domain size, average time, or any other parameter, are not necessary met.  
 
 ## Programm:
 * Tuesday, Oct 7, 9-13: Introduction, Methods, Code, Interface to OpenFOAM, simple meshing, installation, first case.
@@ -11,7 +13,7 @@ Material for openfoam tutorial, LSTM, Erlangen, 7-10 October 2025.
 
 ## Starting point
 
-OF13 installed, installation instruction at: ...
+OF13 installed, installation instruction at: **TODO**
 
 Environmental variables are loaded (for instance, adding the following string to the .bashrc file). 
 
@@ -48,7 +50,7 @@ checkMesh | tee log.checkMesh
 icoFoam | tee log.icoFoam
 ```
 
-If you would like to remove grid and solution and start from scratch, use: *foamCleanTutorials*. 
+If you would like to remove grid and solution to start from scratch, use: *foamCleanTutorials*. 
 
 You can visualize the solution with: *paraFoam -builtin*.
 
@@ -72,16 +74,22 @@ grep -r '#includeFunc'
 ```
 
 Integrate the additional post-processing options, for example:
-* change name of function output
-* 
-* 
-* 
-* 
+* change name of function output.
+* add residuals.
+* add streamlines.
+* add sampling over a plane.
+* add probes.
+* add sampling over a patch.
+* compute the wall shear-stress. 
 
 Also interesting, for other applications: 
-* *forceCoeffs*, from *motorBike*
-* 
+* *forceCoeffs* (from *motorBike*).
+* *Q* (from *propeller*).
+
+3. Visualization... **TODO**
+
+## Step 2
+
+## Step 3
 
 
-
-3. 
