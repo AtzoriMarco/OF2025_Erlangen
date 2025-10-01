@@ -1,7 +1,7 @@
 # OF2025_Erlangen
 Material for openfoam tutorial, LSTM, Erlangen, 7-10 October 2025.
 
-## Programm:
+## Program (to be updated):
 * Tuesday, Oct 7, 9-13: Introduction, Methods, Code, Interface to OpenFOAM, simple meshing, installation, first case.
 * Wednesday, Oct 8, 9-13: Incompressible flow, "running" (?). postprocessing, statistics, running cases on a cluster, including CPU and GPU version, profiling.
 * Thursday, Oct 9-13: Including more complex physics: temperature, free surfaces, and particles. 
@@ -46,7 +46,7 @@ rm -rf
 cat 
 grep
 ```
-## Note
+## Disclaimer for what follows
 
 * This README contains a set of instructions and the case studies. Each case study is included as it is **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in different location than this repository. 
 
