@@ -9,7 +9,7 @@ Material for openfoam tutorial, LSTM, Erlangen, 7-10 October 2025.
 
 ## Prerequisites
 
-* A Linux environtment, with the openFOAM installed. If you do not have experience with Linux, do not worry, I will provide a introducion that covers what is required for this tutorial. The best way to follow step by step is using a virtual machine (such as [VMware](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion) of [VirtualBox](https://www.virtualbox.org/)), with the lastest [Ubuntu](https://ubuntu.com/download/desktop) distrubution installed. A virtual machine is installed as a regular program, it then requires to identify the same image of the operative system that you would use to install it. **Dual booting or a change of operative system is not required nor advised to follow the course**.
+* A Linux environtment. If you do not have experience with Linux, do not worry, I will provide a introducion that covers what is required for this tutorial. The best way to follow step by step is using a virtual machine (such as [VMware](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion) of [VirtualBox](https://www.virtualbox.org/)), with the lastest [Ubuntu](https://ubuntu.com/download/desktop) distrubution installed. A virtual machine is installed as a regular program, it then requires to identify the same image of the operative system that you would use to install it. **Dual booting or a change of operative system is not required nor advised to follow the course**.
 
 * In the setup of the virtual machine, please allocate at least 50 GB of storage, which is on the safe side, and 2 CPUs, which is the minimum to test parallel execution.
 
@@ -29,7 +29,7 @@ I will comment the section "User configuration" of the installation instructions
 
 ## Let's start
 
-OF13 installed, installation instruction at: **TODO**
+**TODO**: add comments on bashrc and terminal
 
 Environmental variables are loaded (for instance, adding the following string to the .bashrc file). 
 
