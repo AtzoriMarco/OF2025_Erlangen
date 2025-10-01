@@ -9,23 +9,20 @@ Material for openfoam tutorial, LSTM, Erlangen, 7-10 October 2025.
 
 ## Prerequisites
 
-* A Linux environtment. If you do not have experience with Linux, do not worry, I will provide a introducion that covers what is required for this tutorial. The best way to follow step by step is using a virtual machine (such as [VMware](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion) of [VirtualBox](https://www.virtualbox.org/)), with the lastest [Ubuntu](https://ubuntu.com/download/desktop) distrubution installed. A virtual machine is installed as a regular program, it then requires to identify the same image of the operative system that you would use to install it. **Dual booting or a change of operative system is not required nor advised to follow the course**.
-
-* In the setup of the virtual machine, please allocate at least 50 GB of storage, which is on the safe side, and 2 CPUs, which is the minimum to test parallel execution.
+* A laptop with a Linux environtment. If you do not have experience with Linux, do not worry: I will provide an introducion that covers what is required for this tutorial. The best way to follow step by step is using a virtual machine (such as [VMware](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion) of [VirtualBox](https://www.virtualbox.org/)), with the lastest [Ubuntu](https://ubuntu.com/download/desktop) distrubution installed. A virtual machine works as a regular program; it requires the image of the operative system that you would use like emulate, which is the same file that you download to install. In the setup of the virtual machine, please allocate at least 50 GB of storage, which is on the safe side, and 2 CPUs, which is the minimum to test parallel execution. **Dual booting or a change of operative system is not required nor advised to follow the course**.
 
 * If you are already familiary with Linux, you are free to use what you are confortable with.
 
 * You can also try to use the [Windows Subsystem for Linux (WSL)](https://ubuntu.com/desktop/wsl), if you are so inclined. It creates a Linux environment in Windows, which you can directly without virtual machine, but I will not provide support for it. 
 
-* In the Linux enviroment that you choose, install [OpenFOAM13](https://openfoam.org/download/13-ubuntu/), following the at least the first steps of the installation instructions: 
+* In the Linux enviroment that you choose, install the [OpenFOAM13](https://openfoam.org/download/13-ubuntu/) package, following the at least the first steps of the installation instructions: 
 ```
 sudo sh -c "wget -O - https://dl.openfoam.org/gpg.key > /etc/apt/trusted.gpg.d/openfoam.asc"
 sudo add-apt-repository http://dl.openfoam.org/ubuntu
 sudo apt update
 sudo apt -y install openfoam13
 ```
-I will comment the section "User configuration" of the installation instructions in my introduction.
-
+I will comment the section "User configuration" of the installation instructions in my introduction. If you are more experienced you can compile it instead of installing as a standard package. 
 
 ## Let's start
 
@@ -48,7 +45,7 @@ grep
 ```
 ## Disclaimer for what follows
 
-* This README contains a set of instructions and the case studies. Each case study is included as it is **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in different location than this repository. 
+* This README contains a set of instructions and the case studies. Each case study is included as it is **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in different location than this repository. The paths reported toge
 
 * Tutorials are intended to illustrate some of the capability of the code; requirements to assure imulations yield realistic results, such as those on resolution, domain size, average time, or any other parameter, are not necessary met.  
 
