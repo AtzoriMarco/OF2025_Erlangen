@@ -28,7 +28,7 @@ I will comment the section "User configuration" of the installation instructions
 
 **TODO**: add comments on bashrc and terminal
 
-Environmental variables are loaded (for instance, adding the following string to the .bashrc file). 
+Environmental variables are loaded (for instance, adding the following string at the end of the *bashrc* file). 
 
 ```
 alias of13=". /opt/openfoam13/etc/bashrc"
@@ -43,14 +43,21 @@ rm -rf
 cat 
 grep
 ```
-## Disclaimer for what follows
 
-* This README contains a set of instructions and the case studies. Each case study is included as it is **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in different location than this repository. The paths reported toge
+## Disclaimer & references 
 
-* Tutorials are intended to illustrate some of the capability of the code; requirements to assure imulations yield realistic results, such as those on resolution, domain size, average time, or any other parameter, are not necessary met.  
+* This README contains a set of instructions and the case studies. Each case study is included as it is **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in different location than this repository. The paths may differ depending on OF installation.
 
+* Tutorials are intended to illustrate some of the capabilities of the code; requirements to assure simulations yield realistic results, such as those on resolution, domain size, and average time, are typically not met.  
 
-## Step 0
+* There is already a copious amount of material available online, sometimes with outdated information on previous version, sometimes referring to alternative OpenFOAM distributions. Although focusing on one distribution is clearly helpful as a beginner, I think the best approach is just being open to change distribution when convinient. Among possible sources that I can recommend: 
+
+1. Everything done by [Prof. Håkan Nilsson](http://www.tfd.chalmers.se/~hani/), but specifically the material of the course [CFD with OpenSource Software](https://www.tfd.chalmers.se/~hani/kurser/OS_CFD/)
+2. The material created by ESI (which is now part of Keysight), which is directly maintaining [this distribution](https://www.openfoam.com/news/main-news/openfoam-v2506), for instance the ["3 weeks" series](https://wiki.openfoam.com/index.php?title=%223_weeks%22_series). 
+3. The free material of various consultancies, for instance [Wolf dynamics](https://www.wolfdynamics.com/), which is a spin-off of the University of Genoa (here you can find their)
+4. There are text books that refer directly to OpenFOAM, for instance: [The Finite Volume Method in Computational Fluid Dynamics, 2016, Moukalled, Mangani, Darwish](https://link.springer.com/book/10.1007/978-3-319-16874-6)  
+
+## Step 0: the classical beginning
 
 Our first tutorial, the classic (lid-driven) cavity with the legacy solver *icoFoam*. 
 
@@ -73,7 +80,9 @@ If you would like to remove grid and solution to start from scratch, use: *foamC
 
 You can visualize the solution with: *paraFoam -builtin*.
 
-## Step 1
+3. We can now have a look at the standard structure of a case, let's explore... **TODO**
+
+## Step 1: example with post processing
 
 Our second tutorial, the classic "pitzDaily":
 
@@ -105,10 +114,12 @@ Also interesting, for other applications:
 * *forceCoeffs* (from *motorBike*).
 * *Q* (from *propeller*).
 
+
+
 3. Visualization... **TODO**
 
-## Step 2
-
-## Step 3
-
+[comment]: <> ## Step 2
+[comment]: <> So far, we used blockmesh to ...
+[comment]: <> ## Step 3
+[comment]: <> ## Step 4 
 
