@@ -118,8 +118,5 @@ Also interesting, for other applications:
 
 3. Visualization... **TODO**
 
-[ ## Step 2 ]
-[ So far, we used blockmesh to ... ]
-[ ## Step 3 ]
-[ ## Step 4 ]
+[comment]
 
