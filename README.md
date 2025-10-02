@@ -118,8 +118,8 @@ Also interesting, for other applications:
 
 3. Visualization... **TODO**
 
-[comment]: <> ## Step 2
-[comment]: <> So far, we used blockmesh to ...
-[comment]: <> ## Step 3
-[comment]: <> ## Step 4 
+[ ## Step 2 ]
+[ So far, we used blockmesh to ... ]
+[ ## Step 3 ]
+[ ## Step 4 ]
 
