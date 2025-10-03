@@ -1,0 +1,36 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      functions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+
+#includeFunc probes
+(
+    name=probes,
+    points=
+    (
+        (0 0.04 0)
+        (0 0 0)
+        (0 0 -0.025)
+    ),
+    p, U
+)
+
+#includeFunc patchFlowRate(name=flowrate_inlet,patch=inlet)
+#includeFunc patchFlowRate(name=flowrate_outlet,patch=outlet)
+#includeFunc faceZoneFlowRate(name=flowrate_nearOutlet,faceZone=nearOutlet)
+
+
+// ************************************************************************* //
