@@ -1,0 +1,62 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \    /   O peration     | Website:  https://openfoam.org
+    \  /    A nd           | Version:  dev
+     \/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       polynomial;
+    thermo          ePolynomial;
+    equationOfState icoPolynomial;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+/*  
+    Density calculation with formula by Fonoff and Millard
+    Fofonoff, N.P. and Millard, R.C. 1983. Algorithms for computation of fundamental properties of seawater. 
+    Unesco technical papers in marine science 44.
+    The formula is valid in the ranges -2 < T < 40°C, 0 < S < 42 f/Kg. 
+    Pressure effect can be neglected in coastal environments. 
+
+    The coefficients have been retrieved through polinomyal fitting at 5th order.
+*/    
+
+mixture                                                                        
+{                                                                              
+    specie                                                                     
+    {                                                                          
+        molWeight       18.0;                                                  
+    }                                                                          
+    thermodynamics                                                             
+    {                                                                          
+        CvCoeffs<8>     (9850.69 -48.6714 0.13736 -0.000127063  0 0 0 0);      
+        Sf              0;                                                     
+        Hf              0;                                                     
+    }                                                                          
+    equationOfState                                                            
+    {       
+    	rhoCoeffs<8>    (-1.58802491e+04  2.75488627e+02 -1.80485879e+00  5.94576879e-03 -9.84235343e-06  6.53633200e-09 0 0);                                                                               
+    }                                                                          
+    transport                                                                  
+    {                                                                          
+        muCoeffs<8>     (0.116947 -0.00100532 2.90283e-6 -2.80572e-9 0 0 0 0); 
+        kappaCoeffs<8>  (-0.710696 0.0071857 -9.29827e-6 0 0 0 0 0);  
+    }                                                                          
+}
+
+// ************************************************************************* //

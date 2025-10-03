@@ -1,0 +1,121 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   #codeStream
+                {
+                    codeInclude
+                    #{
+                        #include "volFields.H"
+                    #};
+
+                    codeOptions
+                    #{
+                        -I$(LIB_SRC)/finiteVolume/lnInclude \
+                        -I$(LIB_SRC)/meshTools/lnInclude
+                    #};
+
+                    code
+                    #{
+                        const IOdictionary& d = static_cast<const IOdictionary&>(dict);
+                        const fvMesh& mesh = refCast<const fvMesh>(d.db());
+
+                        scalarField T(mesh().nCells(), 0.);
+                        scalar Tup = 300; // Top temperature
+                        scalar Tbot = 270; // Bottom temperature
+
+                        // Determine the maximum and minimum z-coordinates in the mesh
+                        scalar zMin = GREAT;
+                        scalar zMax = -GREAT;
+
+                        forAll(mesh.C(), i)
+                        {
+                            scalar z = mesh.C()[i][2];
+                            if (z < zMin) zMin = z;
+                            if (z > zMax) zMax = z;
+                        }
+
+                        scalar zMid = zMax - 0.7 * (zMax - zMin); // Midpoint for rapid temperature change, accounting for inverted z-axis
+
+                        // Calculate temperature with marine-like profile
+                        forAll(T, i)
+                        {
+                            const scalar z = mesh.C()[i][2];
+
+                            if (z >= zMid)
+                            {
+                                T[i] = Tbot; // Constant low temperature below zMid
+                            }
+                            else
+                            {
+                                T[i] = Tbot + (Tup - Tbot) * pow((zMid - z) / (zMid - zMin), 0.5); // Rapid increase above zMid
+                            }
+                        }
+
+                        writeEntry(os, "", T);
+                    #};
+                };
+
+boundaryField
+{
+	#includeEtc "caseDicts/setConstraintTypes"
+
+    jet_inlet
+    {
+        type            fixedValue;
+    	value           uniform 303;
+    }
+
+    outlet
+    {
+        type            zeroGradient;
+        inletValue      $internalField;
+        value           $internalField;
+    }
+
+    top
+    {
+        type            zeroGradient; //Change to fixedvalue for consistency
+    }
+
+    bottom
+    {
+        type            zeroGradient; //Change to fixedvalue for consistency
+    }
+
+
+    inlet
+    {
+        type            zeroGradient;
+    }
+
+    wall_inlet
+    {
+//        type            zeroGradient;
+        type            fixedValue;
+    	value           uniform 303;
+    }
+
+    "(left_side|right_side)"
+    {
+        type            zeroGradient;
+        // inletValue      $internalField;
+        // value           $internalField;
+    }
+
+}
+
+// ************************************************************************* //

@@ -1,0 +1,26 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalTransport;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// Turbulent model specification for the diffusivity of the energy eq.
+// Specie mass diffusivity can also be specified in this dict, but it requires use of 
+// OF specie framework. Passive scalar trasport does NOT refer to this dict.
+LES
+{
+    model   unityLewisEddyDiffusivity;
+
+    Prt     0.33;
+}
+
+// ************************************************************************* //

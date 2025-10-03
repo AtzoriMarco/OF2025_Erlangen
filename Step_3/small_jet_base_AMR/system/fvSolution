@@ -1,0 +1,101 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    "(rho|rhoFinal)"
+    {
+        solver              PCG;
+        preconditioner      DIC;
+        tolerance           1e-6;
+        relTol              0;
+    };
+
+    p_rgh
+    {
+        solver           GAMG;
+        tolerance        1e-6;
+        relTol           0.1;
+        smoother         GaussSeidel;
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+        relTol          0;
+    }
+
+   "pcorr.*"
+    {
+        $p_rghFinal;
+        tolerance       1e-4;
+    }
+
+
+    ph_rgh
+    {
+      $p_rgh;
+    }
+
+    "(U|k|e)"
+    {
+        solver         smoothSolver; // PBiCGStab;
+        // preconditioner        DILU;
+        smoother       symGaussSeidel;
+        tolerance       1e-06;
+        relTol          0.1;
+	    // nSweeps           1;
+    }
+
+    "(U|k|e)Final"
+	{
+	     $U;
+     	     relTol   0;
+	}	
+	sca		//passive scalar solver addressed separately (outside PIMPLE loop)
+	{
+	solver         PBiCGStab;
+         preconditioner        DILU;
+         nCorr      1;
+        nSubCycles 3;
+        //smoother       DILUGaussSeidel;
+        tolerance       1e-06;
+        relTol          0;
+	    // nSweeps           1;
+	}  
+}
+
+PIMPLE
+{
+    momentumPredictor yes;
+    nOuterCorrectors 1;
+    nCorrectors     2;
+    nNonOrthogonalCorrectors 1;
+    
+    hydrostaticInitialisation  yes;
+    nHydrostaticCorrectors       5;
+    correctPhi yes; //MANDATORY FOR AMR!
+}
+relaxationFactors
+{
+    equations
+    {
+        "(U|k).*"                   1;
+        "(h).*"      1;
+    }
+}
+
+// ************************************************************************* //

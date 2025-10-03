@@ -1,0 +1,196 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 1;
+
+L1 2;   // jet wall length
+L2 4;   // sea length
+H1 2;   // from bottom to low jet
+H2 1;   // from low jet to high jet
+H3 2;   // from hight jet to top
+S1 2;   // from left to left jet
+S2 1;   // from left jet to right jet
+S3 2;   // from right jet to jet
+
+x1 #calc "$L1";
+x2 #calc "$L1+$L2";
+y1 #calc "$H1";
+y2 #calc "$H1+$H2";
+y3 #calc "$H1+$H2+$H3";
+z1 #calc "$S1";
+z2 #calc "$S1+$S2";
+z3 #calc "$S1+$S2+$S3";
+
+nx1 20;
+nx2 40;
+
+ny1 20;
+ny2 10;
+ny3 20;
+
+nz1 20;
+nz2 10;
+nz3 20;
+
+vertices
+(
+    (0     $y1   $z1)  // 0
+    (0     $y2   $z1)  // 1
+    ($x1   0     0  )  // 2
+    ($x1   $y1   0  )  // 3
+    ($x1   $y2   0  )  // 4
+    ($x1   $y3   0  )  // 5
+    ($x2   0     0  )  // 6
+    ($x2   $y1   0  )  // 7
+    ($x2   $y2   0  )  // 8
+    ($x2   $y3   0  )  // 9
+    (0     $y1   $z2)  // 10
+    (0     $y2   $z2)  // 11
+    ($x1   0     $z1)  // 12
+    ($x1   $y1   $z1)  // 13
+    ($x1   $y2   $z1)  // 14
+    ($x1   $y3   $z1)  // 15
+    ($x2   0     $z1)  // 16
+    ($x2   $y1   $z1)  // 17
+    ($x2   $y2   $z1)  // 18
+    ($x2   $y3   $z1)  // 19
+    ($x1   0     $z2)  // 20
+    ($x1   $y1   $z2)  // 21
+    ($x1   $y2   $z2)  // 22
+    ($x1   $y3   $z2)  // 23
+    ($x2   0     $z2)  // 24
+    ($x2   $y1   $z2)  // 25
+    ($x2   $y2   $z2)  // 26
+    ($x2   $y3   $z2)  // 27
+    ($x1   0     $z3)  // 28
+    ($x1   $y1   $z3)  // 29
+    ($x1   $y2   $z3)  // 30
+    ($x1   $y3   $z3)  // 31
+    ($x2   0     $z3)  // 32
+    ($x2   $y1   $z3)  // 33
+    ($x2   $y2   $z3)  // 34
+    ($x2   $y3   $z3)  // 35
+);
+
+blocks
+(
+    hex (0 13 14 1 10 21 22 11) ($nx1 $ny2 $nz2) simpleGrading (1 1 1) // 1
+    hex (2 6 7 3 12 16 17 13) ($nx2 $ny1 $nz1) simpleGrading (1 1 1) // 2
+    hex (3 7 8 4 13 17 18 14) ($nx2 $ny2 $nz1) simpleGrading (1 1 1) // 3
+    hex (4 8 9 5 14 18 19 15) ($nx2 $ny3 $nz1) simpleGrading (1 1 1) // 4
+    hex (12 16 17 13 20 24 25 21) ($nx2 $ny1 $nz2) simpleGrading (1 1 1) // 5
+    hex (13 17 18 14 21 25 26 22) ($nx2 $ny2 $nz2) simpleGrading (1 1 1) // 6
+    hex (14 18 19 15 22 26 27 23) ($nx2 $ny3 $nz2) simpleGrading (1 1 1) // 7
+    hex (20 24 25 21 28 32 33 29) ($nx2 $ny1 $nz3) simpleGrading (1 1 1) // 8
+    hex (21 25 26 22 29 33 34 30) ($nx2 $ny2 $nz3) simpleGrading (1 1 1) // 9
+    hex (22 26 27 23 30 34 35 31) ($nx2 $ny3 $nz3) simpleGrading (1 1 1) // 10
+);
+
+boundary
+(
+    jet_inlet
+    {
+        type patch;
+        faces
+        (
+            (0 10 11 1)
+        );
+    }
+    inlet
+    {
+    	type patch; 
+    	faces
+    	(
+            (2 12 13 3)
+            (3 13 14 4)
+            (4 14 15 5)
+            (12 20 21 13)
+            (14 22 23 15)
+            (20 28 29 21)
+            (21 29 30 22)
+            (22 30 31 23)
+    	);
+    }
+    outlet
+    {
+    	type patch; 
+    	faces
+    	(
+            (6 16 17 7)
+            (7 17 18 8)
+            (8 18 19 9)
+            (16 24 25 17)
+            (17 25 26 18)
+            (18 26 27 19)
+            (24 32 33 25)
+            (25 33 34 26)
+            (26 34 35 27)
+    	);
+    }
+    top
+    {
+    	type patch; 
+    	faces
+    	(
+            (5 15 19 9)
+            (15 23 27 19)
+            (23 31 35 27)
+    	);
+    }
+    bottom
+    {
+        type patch;
+        faces
+        (
+            (2 12 16 6)
+            (12 20 24 16)
+            (20 28 32 24)
+        );
+    }
+    wall_inlet
+    {
+        type wall;
+        faces
+        (
+            (0 13 21 10)
+            (10 21 22 11)
+            (1 14 22 11)
+            (1 0 13 14)
+        );
+    }
+    left_side
+    {
+        type patch;
+        faces
+        (
+            (2 6 7 3)
+            (3 7 8 4)
+            (4 8 9 5)
+        );
+    }
+    right_side
+    {
+        type patch;
+        faces
+        (
+            (28 32 33 29)
+            (29 33 34 30)
+            (30 34 35 31)
+        );
+    }
+);
+
+
+// ************************************************************************* //
