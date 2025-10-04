@@ -1,9 +1,10 @@
 # OF2025_Erlangen
 Material for openfoam tutorial, LSTM, Erlangen, 7-10 October 2025.
 
-## Program (to be updated):
+## Program and scope (to be updated):
+
 * Tuesday, Oct 7, 9-13: Introduction, Methods, Code, Interface to OpenFOAM, simple meshing, installation, first case.
-* Wednesday, Oct 8, 9-13: Incompressible flow, "running" (?). postprocessing, statistics, running cases on a cluster, including CPU and GPU version, profiling.
+* Wednesday, Oct 8, 9-13: Incompressible flow. postprocessing, statistics, running cases on a cluster, including CPU and GPU version, profiling.
 * Thursday, Oct 9-13: Including more complex physics: temperature, free surfaces, and particles. 
 * Friday, Oct 10: discussions and some particular cases.
 

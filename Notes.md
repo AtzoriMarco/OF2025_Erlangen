@@ -2,15 +2,7 @@
 
 ## Let's start
 
-**TODO**: add comments on bashrc and terminal
-
-Environmental variables are loaded (for instance, adding the following string at the end of the *bashrc* file). 
-
-```
-alias of13=". /opt/openfoam13/etc/bashrc"
-```
-
-A generic idea about how a terminal works, be confortable with standard commands: 
+* Let's have a look at some standard commands in the terminal: 
 ```
 cd
 mkdir
@@ -19,37 +11,67 @@ rm -rf
 cat 
 grep
 ```
+* We can also try to create variables in the terminal.
+
+* Environment variables for OpenFOAM are loaded with the script in *penfoam13/etc/bashrc*. We can add a line such as: 
+```
+alias of13=". /opt/openfoam13/etc/bashrc"
+```
+at the end of the file *~/.bashrc* (do not modify the rest of it).
 
 ## Step 0: the classical beginning
 
 Our first tutorial, the classic (lid-driven) cavity with the legacy solver *icoFoam*. 
 
-1. copy the setup from the tutorial folder ($FOAM_TUTORIALS=/opt/openfoam13/tutorials):
+* copy the setup from the tutorial folder (*$FOAM_TUTORIALS=/opt/openfoam13/tutorials*):
 
 ```
 cp -r /opt/openfoam13/tutorials/legacy/incompressible/icoFoam/cavity/cavity .
 ```
 
-2. enter the case folder, create the grid, and run the simulation:
+* We can now have a look at the standard structure of the case: 
+
+1. in *system*:
+- standard input (time step, run time, saving frequency), in *controlDict*.
+- discretization schemes for the derivatives in *fvSchemes*.
+- solution options for the discretized equations *fvSolution*.
+- "dictionaries" for other applications, in this case, *blockMeshDict*.
+2. in *constant*: 
+- physical properties.
+- set of governing equations / modelling.
+3. in *0*: 
+- boundary conditions.
+- initial conditions.
+
+* After entering the case folder, create the grid and run the simulation:
 
 ```
-cd cavity
 blockMesh | tee log.blockMesh
-checkMesh | tee log.checkMesh
 icoFoam | tee log.icoFoam
 ```
 
-If you would like to remove grid and solution to start from scratch, use: *foamCleanTutorials*. 
+* Information on the grid can be obtained with:
+```
+checkMesh | tee log.checkMesh
+```
 
-You can visualize the solution with: *paraFoam -builtin*.
+* You can visualize the solution with: 
+```
+paraFoam -builtin*
+```
 
-3. We can now have a look at the standard structure of a case, let's explore... **TODO**
+* If you would like to remove grid and solution from a tutorial, and start from scratch, use: 
+```
+foamCleanTutorials 
+```
+
+* Try to change the time derivative to visualize the available options. Use the documentation to find info on methods and guidelines.
 
 ## Step 1: example with post processing
 
 Our second tutorial, the classic "pitzDaily":
 
-1. copy and run, with the script provided:
+* copy and run, with the script provided:
 
 ```
 cp -r /opt/openfoam13/tutorials/incompressibleFluid/pitzDaily . 
@@ -81,11 +103,19 @@ Also interesting, for other applications:
 
 ## Step 2: snappyHexMesh
 
-One tutorial from our repository. 
+1. One tutorial from our repository. 
 
 Compute yPlus with: 
 
+```
 foamPostProcess -func yPlus -solver incompressibleFluid
+```
+
+2. One useful to have a look:
+
+```
+tutorials/incompressibleFluid/motorBikeSteady
+```
 
 ## Step 3: code stream and AMR
 
@@ -94,15 +124,7 @@ One tutorial from this repository.
 Test run:
 tutorials/incompressibleVoF/rotatingCube
 
-## Step 4: Examples with multiphase
-
-
-* We can have a look at:
-```
-tutorials/multiphaseEuler/fluidisedBed
-```
-
-1. 
+## Step 4: multiphase
 
 
 * We can also have a look at:
@@ -110,9 +132,7 @@ tutorials/multiphaseEuler/fluidisedBed
 tutorials/multiphaseEuler/damBreak4phase
 ```
 
-1.
-
-## Step 5: 
+## Step 5: particles
 
 1. We can try:
 
@@ -125,4 +145,8 @@ tutorials/incompressibleFluid/TJunction
 3. We can try (run in parallel)
 
 tutorials/multicomponentFluid/verticalChannel
+
+4. We can try: 
+
+tutorials/incompressibleDenseParticleFluid/cyclone
 
