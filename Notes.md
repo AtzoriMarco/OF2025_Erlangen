@@ -104,7 +104,6 @@ foamPostProcess -func flowType
 
 * Check now if we want to do visualization:
 
-
 ## Step 2: snappyHexMesh
 
 1. One tutorial from our repository. 
