@@ -13,7 +13,7 @@ internalField   uniform 0;
 
 boundaryField
 {
-#includeEtc "caseDicts/setConstraintTypes"
+    #includeEtc "caseDicts/setConstraintTypes"
 
     "(jet_inlet|inlet|outlet|top|bottom|wall_inlet|left_side|right_side)"
     {

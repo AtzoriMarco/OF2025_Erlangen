@@ -29,13 +29,9 @@ topoChanger
     field           s;
 
     // Refine field in between lower..upper
-    //FE: cells that fall within this values get refined. Additionaly
-    // cells that got refined but no longher respect this criteria
-    //get unrefined
     lowerRefineLevel 0.4;
     upperRefineLevel 0.9;
     
-    //FE: a bit obscure to me. Unrefines cells below this level, but is it already what
     unrefineLevl 0.01;
 
     // Have slower than 2:1 refinement
@@ -50,7 +46,6 @@ topoChanger
     // Write the refinement level as a volScalarField
     dumpLevel       true;
 
-    // FE: Does literally nothing execpt produce an annoying warning.
     // Use the correctPhi setting in fvSolution.
     correctFluxes (
 		    (phi none)

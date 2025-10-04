@@ -2,34 +2,28 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  13
+    \\  /    A nd           | Version:  10
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      functions;
+    object      surfaceFeaturesDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+surfaces ("walls.stl" "inlet.stl" "outlet.stl");
 
+// Identify a feature when angle between faces < includedAngle
+includedAngle       150;
+subsetFeatures
+{
+    // Keep nonManifold edges (edges with >2 connected faces)
+    nonManifoldEdges       no;
 
-#includeFunc probes
-(
-    name=probes,
-    points=
-    (
-        (0 0.04 0)
-        (0 0 0)
-        (0 0 -0.025)
-    ),
-    p, U
-)
-
-#includeFunc patchFlowRate(name=flowrate_inlet,patch=inlet)
-#includeFunc patchFlowRate(name=flowrate_outlet,patch=outlet)
-
+    // Keep open edges (edges with 1 connected face)
+    openEdges       yes;
+}
 
 // ************************************************************************* //

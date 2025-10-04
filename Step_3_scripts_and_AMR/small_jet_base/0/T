@@ -88,12 +88,12 @@ boundaryField
 
     top
     {
-        type            zeroGradient; //Change to fixedvalue for consistency
+        type            zeroGradient; 
     }
 
     bottom
     {
-        type            zeroGradient; //Change to fixedvalue for consistency
+        type            zeroGradient; 
     }
 
 
@@ -104,7 +104,6 @@ boundaryField
 
     wall_inlet
     {
-//        type            zeroGradient;
         type            fixedValue;
     	value           uniform 303;
     }
@@ -112,8 +111,6 @@ boundaryField
     "(left_side|right_side)"
     {
         type            zeroGradient;
-        // inletValue      $internalField;
-        // value           $internalField;
     }
 
 }

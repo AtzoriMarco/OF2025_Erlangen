@@ -102,37 +102,50 @@ Integrate the additional post-processing options, for example:
 foamPostProcess -func flowType
 ```
 
-* Check now if we want to do visualization:
-
 ## Step 2: snappyHexMesh
 
-1. One tutorial from our repository. 
+* We can have a look at:
+```
+tutorials/incompressibleFluid/motorBikeSteady
+```
+This is also one of the "classical" tutorial, but it is not the fastest to run... 
 
-Compute yPlus with: 
+* We can have a look at the USP induction port in this repository. The full workflow, starting from teh *.stl* file, would be:
+
+1. Create a suitable *blockMeshDict*.
+2. Create/modify the *surfaceFeaturesDict* and *snappyHexMeshDict* dictionaries.
+3. Create constant and BC files, let's try with an LES.
+
+The *run.sh* script is added as reference for the list of operations that are necessary. What is the coarsest grid that we can work on? What is the best way of improving it?
+
+* We can also have a look to new post processing. Compute yPlus with: 
 
 ```
 foamPostProcess -func yPlus -solver incompressibleFluid
 ```
 
-2. One useful to have a look:
+And create the scalar field used to identified vortexes with the *Q* criterion:
 
 ```
-tutorials/incompressibleFluid/motorBikeSteady
+foamPostProcess -func Q
 ```
 
-We can have a look at other post processing utilities.
-
-Also interesting, for other applications: 
-* *forceCoeffs* (from *motorBike*).
-* *Q* (from *propeller*).
-
+(The three simulations with higher resolution with the material provided are better suited to use *Q*)
 
 ## Step 3: code stream and AMR
 
-One tutorial from this repository. 
+* We can now start to have a look at a more complex case.
 
-Test run:
+Let's have a look at:
+```
 tutorials/incompressibleVoF/rotatingCube
+```
+this is fairly complex case study and long to run, but we learn that it is possible to:
+
+1. use scripting in dictionaries.
+2. use adaptive mesh refiniment.
+
+* The *small_jet_base* tutorial
 
 ## Step 4: multiphase
 

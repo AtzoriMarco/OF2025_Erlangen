@@ -9,27 +9,13 @@ FoamFile
 {
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      functions;
+    location    "constant";
+    object      physicalProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+viscosityModel  constant;
 
-
-#includeFunc probes
-(
-    name=probes,
-    points=
-    (
-        (0 0.04 0)
-        (0 0 0)
-        (0 0 -0.025)
-    ),
-    p, U
-)
-
-#includeFunc patchFlowRate(name=flowrate_inlet,patch=inlet)
-#includeFunc patchFlowRate(name=flowrate_outlet,patch=outlet)
-
+nu              [0 2 -1 0 0 0 0] 1.5e-05;
 
 // ************************************************************************* //

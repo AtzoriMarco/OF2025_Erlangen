@@ -26,15 +26,15 @@ thermoType
     energy          sensibleInternalEnergy;
 }
 
-/*  Density calculation with formula by Fonoff and Millard
+/*  
+    Density calculation with formula by Fonoff and Millard
     Fofonoff, N.P. and Millard, R.C. 1983. Algorithms for computation of fundamental properties of seawater. 
     Unesco technical papers in marine science 44.
     The formula is valid in the ranges -2 < T < 40°C, 0 < S < 42 f/Kg. 
     Pressure effect can be neglected in coastal environments. 
 
     The coefficients have been retrieved through polinomyal fitting at 5th order.
-    
-    Working on doing the same update for Cp and transport coefficients, for coherence.*/
+*/
 
 mixture                                                                        
 {                                                                              

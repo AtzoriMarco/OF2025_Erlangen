@@ -52,28 +52,24 @@ solvers
 
     "(U|k|e)"
     {
-        solver         smoothSolver; // PBiCGStab;
-        // preconditioner        DILU;
+        solver         smoothSolver; 
         smoother       symGaussSeidel;
         tolerance       1e-06;
         relTol          0.1;
-	    // nSweeps           1;
     }
 
     "(U|k|e)Final"
 	{
-	     $U;
-     	     relTol   0;
+	    $U;
+     	relTol   0;
 	}
 
 	s		//passive scalar solver addressed separately (outside PIMPLE loop)
 	{
-	solver         smoothSolver; // PBiCGStab;
-        // preconditioner        DILU;
+    	solver         smoothSolver; 
         smoother       symGaussSeidel;
         tolerance       1e-06;
         relTol          0;
-	    // nSweeps           1;
 	}  
 }
 
@@ -81,7 +77,7 @@ PIMPLE
 {
     momentumPredictor yes;
     nOuterCorrectors 1;
-    nCorrectors     2;
+    nCorrectors      2;
     nNonOrthogonalCorrectors 0;
     
     hydrostaticInitialisation  yes;
@@ -92,7 +88,7 @@ relaxationFactors
 {
     equations
     {
-        "(U|k).*"                   1;
+        "(U|k).*"    1;
         "(h).*"      1;
     }
 }

@@ -24,7 +24,7 @@ boundaryField
     jet_inlet
     {
         type            fixedFluxPressure;
-	value           $internalField;
+    	value           $internalField;
     }
 
     outlet
@@ -50,13 +50,13 @@ boundaryField
     inlet
     {
         type            fixedFluxPressure;
-	value           $internalField;
+    	value           $internalField;
     }
 
     wall_inlet
     {
         type            fixedFluxPressure;
-	value           $internalField;
+    	value           $internalField;
     }
 
     "(left_side|right_side)"

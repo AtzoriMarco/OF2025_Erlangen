@@ -10,26 +10,42 @@ FoamFile
     format      ascii;
     class       dictionary;
     location    "system";
-    object      functions;
+    object      controlDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+solver          incompressibleFluid;
 
+startFrom       latestTime;
 
-#includeFunc probes
-(
-    name=probes,
-    points=
-    (
-        (0 0.04 0)
-        (0 0 0)
-        (0 0 -0.025)
-    ),
-    p, U
-)
+startTime       0;
 
-#includeFunc patchFlowRate(name=flowrate_inlet,patch=inlet)
-#includeFunc patchFlowRate(name=flowrate_outlet,patch=outlet)
+stopAt          endTime;
 
+endTime         0.5;
+
+deltaT          1e-5;
+
+writeControl    adjustableRunTime;
+
+writeInterval   0.1;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep  yes;
+
+maxCo           1.2;
 
 // ************************************************************************* //

@@ -2,34 +2,41 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  13
+    \\  /    A nd           | Version:  7
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
+    version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "system";
-    object      functions;
+    class       volVectorField;
+    object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+dimensions      [0 1 -1 0 0 0 0];
 
+internalField   uniform (0 0 0);
 
-#includeFunc probes
-(
-    name=probes,
-    points=
-    (
-        (0 0.04 0)
-        (0 0 0)
-        (0 0 -0.025)
-    ),
-    p, U
-)
+boundaryField
+{
+    inlet
+    {
+        type 		 flowRateInletVelocity;
+	    volumetricFlowRate constant 2.21e-4;
+	    rhoInlet 	 1.225;
+    }
 
-#includeFunc patchFlowRate(name=flowrate_inlet,patch=inlet)
-#includeFunc patchFlowRate(name=flowrate_outlet,patch=outlet)
+    outlet
+    {
+        type zeroGradient;
+    }
 
+    wall
+    {
+        type            noSlip;
+    }
+
+}
 
 // ************************************************************************* //
