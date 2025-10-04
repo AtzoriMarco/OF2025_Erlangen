@@ -1,5 +1,7 @@
 # Notes
 
+A copy with all data is available [here](https://www.dropbox.com/scl/fo/831dyn6jb6kzsjlah0osh/AAJBztjOqlOzHatEmytXSHw?rlkey=677lqu8ws7un1pku7a5hx9cik&st=ij3sskru&dl=0) (temporary visualization access to a Dropbox folder).
+
 ## Let's start
 
 * Let's have a look at some standard commands in the terminal: 
@@ -57,7 +59,7 @@ checkMesh | tee log.checkMesh
 
 * You can visualize the solution with: 
 ```
-paraFoam -builtin*
+paraFoam -builtin
 ```
 
 * If you would like to remove grid and solution from a tutorial, and start from scratch, use: 
@@ -69,16 +71,16 @@ foamCleanTutorials
 
 ## Step 1: example with post processing
 
-Our second tutorial, the classic "pitzDaily":
+Our second tutorial, the also classic "pitzDaily". It is inspired by [Pitz & Daily, 1983](https://doi.org/10.2514/3.8290).
 
-* copy and run, with the script provided:
+* Copy and run, using the script already provided in the tutorial:
 
 ```
 cp -r /opt/openfoam13/tutorials/incompressibleFluid/pitzDaily . 
 ./Allrun
 ```
 
-2. we can try to extend the post processing to extract more informations. Let's check the tutorials folder for incompressible flows, and see examples of other available functions: 
+* We can try to extend the post processing to extract more informations. Let's check the tutorials folder for incompressible flows, and see examples of other available functions: 
 
 ```
 tut
@@ -87,19 +89,21 @@ grep -r '#includeFunc'
 ```
 
 Integrate the additional post-processing options, for example:
-* change name of function output.
-* add residuals.
-* add streamlines.
-* add sampling over a plane.
-* add probes.
-* add sampling over a patch.
-* compute the wall shear-stress. 
+1. change name of function output.
+2. add residuals.
+3. add streamlines.
+4. add sampling over a plane.
+5. add probes.
+6. add sampling over a patch.
+7. compute the wall shear-stress. 
 
-Also interesting, for other applications: 
-* *forceCoeffs* (from *motorBike*).
-* *Q* (from *propeller*).
+* We can also use some post-processing utilities (a list is provided [here](https://doc.cfd.direct/openfoam/user-guide-v13/post-processing-functionality#x41-2180007.3)). For instance, let's have a look at: 
+```
+foamPostProcess -func flowType
+```
 
-3. Visualization... **TODO**
+* Check now if we want to do visualization:
+
 
 ## Step 2: snappyHexMesh
 
@@ -116,6 +120,13 @@ foamPostProcess -func yPlus -solver incompressibleFluid
 ```
 tutorials/incompressibleFluid/motorBikeSteady
 ```
+
+We can have a look at other post processing utilities.
+
+Also interesting, for other applications: 
+* *forceCoeffs* (from *motorBike*).
+* *Q* (from *propeller*).
+
 
 ## Step 3: code stream and AMR
 
@@ -150,3 +161,4 @@ tutorials/multicomponentFluid/verticalChannel
 
 tutorials/incompressibleDenseParticleFluid/cyclone
 
+## Step 6: the structure of the code and programming

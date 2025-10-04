@@ -51,11 +51,11 @@ FoamFile
 #includeFunc faceZoneFlowRate(name=flowrate_nearOutlet,faceZone=nearOutlet)
 
 // from T3A:
-#includeFunc wallShearStress(executeAtStart=no)
+#includeFunc wallShearStress(name=wallShearStress,executeAtStart=no)
 #includeFunc graphUniform
 (
-    executeAtStart=no
     name=wallShearStressGraph,
+    executeAtStart=no,
     start=(0 -0.0254 0),
     end=(0.206 -0.0254 0),
     nPoints=100,
