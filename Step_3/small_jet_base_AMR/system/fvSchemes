@@ -32,7 +32,7 @@ divSchemes
     div(phi,k)        Gauss limitedLinear 1;  // Gauss limitedLinear 1;
     div(phi,e)        Gauss limitedLinear 1;  // Gauss limitedLinear 1;
     div(phi,K)        Gauss linear;  //Gauss linear;
-    div(phi,sca)        Gauss limitedLinear 1; //Switched due to instability at start, probably able to switch back on finer mesh
+    div(phi,s)        Gauss limitedLinear 1; //Switched due to instability at start, probably able to switch back on finer mesh
     div(phi,(p|rho)) Gauss linear;//Gauss linear; //bounded Gauss limitedLinear 1;
     div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
 }

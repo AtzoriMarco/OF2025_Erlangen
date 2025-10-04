@@ -64,8 +64,9 @@ solvers
 	{
 	     $U;
      	     relTol   0;
-	}	
-	sca		//passive scalar solver addressed separately (outside PIMPLE loop)
+	}
+
+	s		//passive scalar solver addressed separately (outside PIMPLE loop)
 	{
 	solver         smoothSolver; // PBiCGStab;
         // preconditioner        DILU;

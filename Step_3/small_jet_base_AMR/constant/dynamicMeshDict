@@ -26,13 +26,17 @@ topoChanger
     refineInterval  10;
 
     // Field to be refinement on
-    field           k;
+    field           s;
 
     // Refine field in between lower..upper
-    lowerRefineLevel 0.018;
-    upperRefineLevel 0.04;
+    //FE: cells that fall within this values get refined. Additionaly
+    // cells that got refined but no longher respect this criteria
+    //get unrefined
+    lowerRefineLevel 0.4;
+    upperRefineLevel 0.9;
     
-    unrefineLevl 0.018;
+    //FE: a bit obscure to me. Unrefines cells below this level, but is it already what
+    unrefineLevl 0.01;
 
     // Have slower than 2:1 refinement
     nBufferLayers   2;
@@ -44,8 +48,9 @@ topoChanger
     maxCells        10000000;
 
     // Write the refinement level as a volScalarField
-    dumpLevel       false;
+    dumpLevel       true;
 
+    // FE: Does literally nothing execpt produce an annoying warning.
     // Use the correctPhi setting in fvSolution.
     correctFluxes (
 		    (phi none)
@@ -54,7 +59,7 @@ topoChanger
 		  );
 
 }
-/*
+
 distributor
 {
     type            distributor;
@@ -62,5 +67,5 @@ distributor
     libs            ("libfvMeshDistributors.so");
     redistributionInterval  20;
 }
-*/
+
 // ************************************************************************* //

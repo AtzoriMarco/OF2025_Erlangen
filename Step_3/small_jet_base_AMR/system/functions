@@ -14,9 +14,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-/*
-#includeFunc scalarTransport(scalar,alphal=1,alphat=1)
-*/
+//#includeFunc fieldAverage(U, p_rgh, prime2Mean = yes)
+#includeFunc scalarTransport(s)
+
     residuals
 {
     type            residuals;
@@ -24,7 +24,7 @@ FoamFile
     libs            ("libutilityFunctionObjects.so");
 
     writeControl    timeStep;
-    writeInterval   5;
+    writeInterval   10;
     fields
     (
         U

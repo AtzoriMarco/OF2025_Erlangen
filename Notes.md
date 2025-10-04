@@ -91,6 +91,8 @@ foamPostProcess -func yPlus -solver incompressibleFluid
 
 One tutorial from this repository. 
 
+Test run:
+tutorials/incompressibleVoF/rotatingCube
 
 ## Step 4: Examples with multiphase
 
@@ -111,4 +113,16 @@ tutorials/multiphaseEuler/damBreak4phase
 1.
 
 ## Step 5: 
+
+1. We can try:
+
+tutorials/fluid/stackPlume
+
+2. We can try:
+
+tutorials/incompressibleFluid/TJunction
+
+3. We can try (run in parallel)
+
+tutorials/multicomponentFluid/verticalChannel
 
