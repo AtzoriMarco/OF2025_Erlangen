@@ -13,17 +13,23 @@ rm -rf
 cat 
 grep
 ```
-* We can also try to create variables in the terminal.
+* We can also try to create variables in the terminal, and understand how it can be used to create a "environment" for any software.
 
-* Environment variables for OpenFOAM are loaded with the script in *penfoam13/etc/bashrc*. We can add a line such as: 
+* Environment variables for OpenFOAM are loaded with the script in *openfoam13/etc/bashrc*. We can add a line such as: 
 ```
 alias of13=". /opt/openfoam13/etc/bashrc"
 ```
-at the end of the file *~/.bashrc* (do not modify the rest of it).
+at the end of our file *~/.bashrc* (do not modify the rest of it).
+
+* We can have a look at the collection of variables and aliases created by OpenFOAM's .bashrc script, for instance:
+```
+echo $FOAM_
+type tut
+```
 
 ## Step 0: the classical beginning
 
-Our first tutorial, the classic (lid-driven) cavity with the legacy solver *icoFoam*. 
+Our first tutorial, the classic (lid-driven) cavity, with the legacy solver *icoFoam*. 
 
 * copy the setup from the tutorial folder (*$FOAM_TUTORIALS=/opt/openfoam13/tutorials*):
 
@@ -51,6 +57,8 @@ cp -r /opt/openfoam13/tutorials/legacy/incompressible/icoFoam/cavity/cavity .
 blockMesh | tee log.blockMesh
 icoFoam | tee log.icoFoam
 ```
+
+note that *icoFoam* is a legacy solver for the incompressible Navier-Stokes equations, we will focus on the new structure of the code.
 
 * Information on the grid can be obtained with:
 ```
