@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      dynamicMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+topoChanger
+{
+    type            refiner;
+
+    libs            ("libfvMeshTopoChangers.so");
+
+    mover           none;
+
+    // How often to refine
+    refineInterval  10;
+
+    // Field to be refinement on
+    field           nut;
+
+    // Refine field in between lower..upper
+    lowerRefineLevel 2.5e-5;
+    upperRefineLevel 5e-5;
+    
+    unrefineLevl 1.5e-5;
+
+    // Have slower than 2:1 refinement
+    nBufferLayers   2;
+
+    // Refine cells only up to maxRefinement levels
+    maxRefinement   1;
+
+    // Stop refinement if maxCells reached
+    maxCells        100000;
+
+    // Write the refinement level as a volScalarField
+    dumpLevel       true;
+
+    // Use the correctPhi setting in fvSolution.
+    correctFluxes (
+		    (phi none)
+		    (phi_0 none) 
+		    (ghf none)
+		  );
+
+}
+
+distributor
+{
+    type            distributor;
+
+    libs            ("libfvMeshDistributors.so");
+    redistributionInterval  100;
+}
+
+// ************************************************************************* //

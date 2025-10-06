@@ -191,7 +191,7 @@ boundary
         );
     }
     
-           internal // needed for distributor
+    internal // needed for distributor
     {
         type internal;
         faces ();
