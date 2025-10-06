@@ -1,6 +1,6 @@
 # Notes
 
-A copy of this repository, including all data is available [here](https://www.dropbox.com/scl/fo/831dyn6jb6kzsjlah0osh/AAJBztjOqlOzHatEmytXSHw?rlkey=677lqu8ws7un1pku7a5hx9cik&st=ij3sskru&dl=0) (thi is a link to a Dropbox folder with temporary visualization access).
+A copy of this repository, including all data is available [here](https://www.dropbox.com/scl/fo/831dyn6jb6kzsjlah0osh/AAJBztjOqlOzHatEmytXSHw?rlkey=677lqu8ws7un1pku7a5hx9cik&st=ij3sskru&dl=0) (this is a link to a Dropbox folder with temporary visualization access).
 
 ## Let's start
 
