@@ -116,9 +116,9 @@ foamPostProcess -func flowType
 ```
 tutorials/incompressibleFluid/motorBikeSteady
 ```
-This is also one of the "classical" tutorial, but it is not the fastest to run... 
+This is also one of the "classical" tutorial, but it is not the fastest to run.  
 
-* We can have a look at the USP induction port in this repository. The full workflow, starting from teh *.stl* file, would be:
+* We can have a look at the [USP induction port tutorial](./Step_2_snappyHexMesh/USP_induction_port) in this repository. The full workflow, starting from teh *.stl* file, would be:
 
 1. Create a suitable *blockMeshDict*.
 2. Create/modify the *surfaceFeaturesDict* and *snappyHexMeshDict* dictionaries.
@@ -137,7 +137,6 @@ And create the scalar field used to identified vortexes with the *Q* criterion:
 ```
 foamPostProcess -func Q
 ```
-
 (The three simulations with higher resolution with the material provided are better suited to use *Q*)
 
 ## Step 3: code stream and AMR
@@ -153,7 +152,7 @@ this is fairly complex case study and long to run, but we learn that it is possi
 1. use scripting in dictionaries.
 2. use adaptive mesh refiniment.
 
-* The *small_jet_base* tutorial 
+* We can now have a look at the [small jet tutorial](./Step_3_scripts_and_AMR/small_jet) tutorial. 
 
 ## Step 4: multiphase
 
