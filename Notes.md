@@ -60,8 +60,7 @@ cp -r /opt/openfoam13/tutorials/legacy/incompressible/icoFoam/cavity/cavity .
 blockMesh | tee log.blockMesh
 icoFoam | tee log.icoFoam
 ```
-
-note that *icoFoam* is a legacy solver for the incompressible Navier-Stokes equations, we will focus on the new structure of the code.
+note that *icoFoam* is a legacy solver for the incompressible Navier-Stokes equations, we will focus on the new structure of the code. What is the meaning of *tee*?
 
 * Information on the grid can be obtained with:
 ```
@@ -72,28 +71,35 @@ checkMesh | tee log.checkMesh
 ```
 paraFoam -builtin
 ```
+We can also have a better look at the information recorded in the log file and the data structure of a case, in the solution and the *constant/polyMesh* folder (these are not necessarly files that you would work on directly as a regular user). 
 
 * If you would like to remove grid and solution from a tutorial, and start from scratch, use: 
 ```
 foamCleanTutorials 
 ```
 
-* Change the time derivative to a random string and try to run *icoFoam* to visualize other the available options (use the documentation to find info on methods).
+* Change the time derivative to a random string and try to run *icoFoam* to visualize other available options (use the documentation to find info on methods).
 
-#### Suggested exercises: 
-1. 
+#### Suggested exercise: 
+The lid-driven cavity is a standard benchmark case, and this is the simplest simulation that we can possibly run... an (attempted) direct numerical simulation! We can try to:
+1. Change the grid, working on *blockMesh*.
+2. Change the differention with lower or higher order.
+3. Establish a suitable measure of the discretization error and find out if it is possible to establish the order of accuracy. What is the best compromise between accuracy and computational cost?
+4. Is our solution chaning in time? If so, how and why?
+5. What is the Reynolds number of this test case? Try to increase it: how the solution is supposed to change?  
 
 ## Step 1: example with post processing
 
-Our second tutorial, the also classic "pitzDaily". It is inspired by [Pitz & Daily, 1983](https://doi.org/10.2514/3.8290).
+Our second tutorial is the also classic "pitzDaily". It is inspired by [Pitz & Daily, 1983](https://doi.org/10.2514/3.8290).
 
-* Copy and run, using the script already provided in the tutorial:
+* Copy from *tut* and run, using the script already provided in the tutorial:
 
 ```
 cp -r /opt/openfoam13/tutorials/incompressibleFluid/pitzDaily . 
 ./Allrun
 ```
-* This tutorial uses a Reynolds-Averaged Navier-Stokes (RANS) simulation. Let's identify the corresponding dictionaries and options.
+
+* This tutorial uses an ("unsteady") Reynolds-Averaged Navier-Stokes (RANS) simulation. Let's identify the corresponding dictionaries and relevant options that we had selected. 
 
 * We can try to extend the post processing to extract more informations. Let's check the tutorials folder for incompressible flows, and see examples of other available functions: 
 
@@ -116,7 +122,16 @@ Integrate the additional post-processing options, for example:
 ```
 foamPostProcess -func flowType
 ```
-#### Suggested exercises: 
+
+* We can also make a comparison with: 
+```
+tutorials/incompressibleFluid/pitzDailySteady
+```
+
+#### Suggested exercise: 
+We used our first RANS model:
+1. What is the meaning of time evolution in this kind of simulation? What is the distinction bewtween *pitzDailySteady* and *pitzDaily*?
+2. Find other available turbulence model, test them and discuss how the solution changes.
 
 ## Step 2: snappyHexMesh
 
@@ -124,28 +139,40 @@ foamPostProcess -func flowType
 ```
 tutorials/incompressibleFluid/motorBikeSteady
 ```
-This is also one of the "classical" tutorial, but it is not the fastest case to run.  
+This is also one of the "classical" tutorial, but it is not the fastest case to run. It makes a pair with:
+```
+tutorials/incompressibleFluid/motorBike
+```
+As for *pitzDaily*, this is by default a set up for an unsteady RANS (URANS), but it also contains a possible dictionaries for large-eddy simulations (LES).
 
-* Let's start to work with the [USP induction port tutorial](./Step_2_snappyHexMesh/USP_induction_port) in this repository. The full workflow, assuming *.stl* files that describe the geometry are alreaady provided, would be:
+* Let's start to work with the [USP induction port tutorial](./Step_2_snappyHexMesh/USP_induction_port) in this repository, with the intention of preparing a LES. The full workflow, assuming *.stl* files that describe the geometry are alreaady provided, would be:
 
 1. Create a suitable *blockMeshDict*.
 2. Create/modify the *surfaceFeaturesDict* and *snappyHexMeshDict* dictionaries.
-3. Create constant and BC files. In this case, let's to run a LES.
+3. Create constant and BC files. 
 
-The *run.sh* script is added as reference for the list of operations that are necessary. What is the coarsest grid that we can work on? What is the best way of improving it?
+The *run.sh* script is added as reference for the list of operations that are necessary. Let's start with a very coarse resolution, and later experiment with different levels of refinements.
 
-* We can also have a look to new post processing. Compute yPlus with: 
+* This is the first case for which we will try to run in parallel: note the necessity of the *-parallel* option. 
+
+* We can also have a look to new post processing: 
+1. Compute yPlus with: 
 
 ```
 foamPostProcess -func yPlus -solver incompressibleFluid
 ```
-
-And create the scalar field used to identified vortexes with the *Q* criterion:
+2. And create the scalar field used to identified vortexes with the *Q* criterion:
 
 ```
 foamPostProcess -func Q
 ```
 (The three simulations with higher resolution with the material provided are better suited to use *Q*)
+
+#### Suggested exercises: 
+We can run a large eddy simulation. Is it always a good idea?
+1. Identiy at least one physical quantity that is *only* accessible with LES, and one that is accessible with both RANS and LES, and assess how resolution and other possible simulation parameters influence its measure. When do we reach convergence? And, with respect to what?  
+2. How should we define a resolution criteria and design a grid?
+3. This is the first case that we run in parallel. Test different decomposition strategies. What is changing with the execution speed?
 
 ## Step 3: code stream and AMR
 

@@ -1,12 +1,16 @@
 # OF2025_Erlangen
-Material for openfoam tutorial, LSTM, Erlangen, 7-10 October 2025.
+Material for OpenFOAM course, LSTM, Erlangen, 7-10 October 2025.
 
-## Program and scope (to be updated):
+## Scope and Program (to be updated):
+
+This course is intended for OpenFOAM beginners, to provide a broad picture of the capabilty of the code. It is planned to be accessible for CFD beginners as well, with the important caveat that they should consider it as a very preliminary introduction to a complex subject.  
 
 * Tuesday, Oct 7, 9-13: Introduction, Methods, Code, Interface to OpenFOAM, simple meshing, installation, first case.
 * Wednesday, Oct 8, 9-13: Incompressible flow. postprocessing, statistics, running cases on a cluster, including CPU and GPU version, profiling.
 * Thursday, Oct 9-13: Including more complex physics: temperature, free surfaces, and particles. 
 * Friday, Oct 10: discussions and some particular cases.
+
+Suggested exercises are often intended as food for thoughts for CFD beginners in general, and are totally optional.
 
 ## Prerequisites
 
