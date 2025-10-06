@@ -1,6 +1,6 @@
 # Notes
 
-A copy with all data is available [here](https://www.dropbox.com/scl/fo/831dyn6jb6kzsjlah0osh/AAJBztjOqlOzHatEmytXSHw?rlkey=677lqu8ws7un1pku7a5hx9cik&st=ij3sskru&dl=0) (temporary visualization access to a Dropbox folder).
+A copy of this repository, including all data is available [here](https://www.dropbox.com/scl/fo/831dyn6jb6kzsjlah0osh/AAJBztjOqlOzHatEmytXSHw?rlkey=677lqu8ws7un1pku7a5hx9cik&st=ij3sskru&dl=0) (thi is a link to a Dropbox folder with temporary visualization access).
 
 ## Let's start
 
@@ -13,7 +13,7 @@ rm -rf
 cat 
 grep
 ```
-* We can also try to create variables in the terminal, and understand how it can be used to create a "environment" for any software.
+* We can also try to create variables in the terminal, and understand how it can be used to create an "environment" for any software.
 
 * Environment variables for OpenFOAM are loaded with the script in *openfoam13/etc/bashrc*. We can add a line such as: 
 ```
@@ -21,9 +21,12 @@ alias of13=". /opt/openfoam13/etc/bashrc"
 ```
 at the end of our file *~/.bashrc* (do not modify the rest of it).
 
-* We can have a look at the collection of variables and aliases created by OpenFOAM's .bashrc script, for instance:
+* We can have a look at the collection of variables and aliases created by OpenFOAM's *.bashrc* script, for instance try using the tab key to autocomplete this command:
 ```
 echo $FOAM_
+```
+and check:
+```
 type tut
 ```
 
@@ -43,7 +46,7 @@ cp -r /opt/openfoam13/tutorials/legacy/incompressible/icoFoam/cavity/cavity .
 - standard input (time step, run time, saving frequency), in *controlDict*.
 - discretization schemes for the derivatives in *fvSchemes*.
 - solution options for the discretized equations *fvSolution*.
-- "dictionaries" for other applications, in this case, *blockMeshDict*.
+- "dictionaries" for other applications, in this case, *blockMeshDict*. We can have a first look at this one, that is used to create a structured grid.
 2. in *constant*: 
 - physical properties.
 - set of governing equations / modelling.
@@ -75,7 +78,10 @@ paraFoam -builtin
 foamCleanTutorials 
 ```
 
-* Try to change the time derivative to visualize the available options. Use the documentation to find info on methods and guidelines.
+* Change the time derivative to a random string and try to run *icoFoam* to visualize other the available options (use the documentation to find info on methods).
+
+#### Suggested exercises: 
+1. 
 
 ## Step 1: example with post processing
 
@@ -87,6 +93,7 @@ Our second tutorial, the also classic "pitzDaily". It is inspired by [Pitz & Dai
 cp -r /opt/openfoam13/tutorials/incompressibleFluid/pitzDaily . 
 ./Allrun
 ```
+* This tutorial uses a Reynolds-Averaged Navier-Stokes (RANS) simulation. Let's identify the corresponding dictionaries and options.
 
 * We can try to extend the post processing to extract more informations. Let's check the tutorials folder for incompressible flows, and see examples of other available functions: 
 
@@ -109,6 +116,7 @@ Integrate the additional post-processing options, for example:
 ```
 foamPostProcess -func flowType
 ```
+#### Suggested exercises: 
 
 ## Step 2: snappyHexMesh
 
@@ -116,13 +124,13 @@ foamPostProcess -func flowType
 ```
 tutorials/incompressibleFluid/motorBikeSteady
 ```
-This is also one of the "classical" tutorial, but it is not the fastest to run.  
+This is also one of the "classical" tutorial, but it is not the fastest case to run.  
 
-* We can have a look at the [USP induction port tutorial](./Step_2_snappyHexMesh/USP_induction_port) in this repository. The full workflow, starting from teh *.stl* file, would be:
+* Let's start to work with the [USP induction port tutorial](./Step_2_snappyHexMesh/USP_induction_port) in this repository. The full workflow, assuming *.stl* files that describe the geometry are alreaady provided, would be:
 
 1. Create a suitable *blockMeshDict*.
 2. Create/modify the *surfaceFeaturesDict* and *snappyHexMeshDict* dictionaries.
-3. Create constant and BC files, let's try with an LES.
+3. Create constant and BC files. In this case, let's to run a LES.
 
 The *run.sh* script is added as reference for the list of operations that are necessary. What is the coarsest grid that we can work on? What is the best way of improving it?
 
