@@ -27,7 +27,7 @@ I will comment the section "User configuration" of the installation instructions
 
 ## Disclaimer & references 
 
-* "Notes.md" contains a set of instructions and the case studies. Each case study is included as it is **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in different location than this repository, and use it for reference. The paths may differ depending on OF installation.
+* [Notes.md](Notes.md) contains a set of instructions and the case studies. Each case study is included as it is **after** the instructions have been followed, e.g. addining new post-processing operations, and the data removed. It is then recommended to reproduce the instruction in a location different than this repository, and use it for reference. The paths may differ depending on OF installation.
 
 * Tutorials are intended to illustrate some of the capabilities of the code; requirements to assure simulations yield realistic results, such as those on resolution, domain size, and average time, are typically not met.  
 
@@ -35,10 +35,10 @@ I will comment the section "User configuration" of the installation instructions
 
 1. Everything done by [Prof. Håkan Nilsson](http://www.tfd.chalmers.se/~hani/), but specifically the material of the course [CFD with OpenSource Software](https://www.tfd.chalmers.se/~hani/kurser/OS_CFD/).
 2. The material created by ESI (which is now part of Keysight), which is directly maintaining [this distribution](https://www.openfoam.com/news/main-news/openfoam-v2506), for instance the ["3 weeks" series](https://wiki.openfoam.com/index.php?title=%223_weeks%22_series). 
-3. The free material of various consultancies, for instance [CFD Direct](https://doc.cfd.direct/openfoam/user-guide-v13/index) and [Wolf dynamics](https://www.wolfdynamics.com/), which is a spin-off of the University of Genoa (here you can find their).
+3. The free material of various consultancies, for instance [CFD Direct](https://doc.cfd.direct/openfoam/user-guide-v13/index) and [Wolf dynamics](https://www.wolfdynamics.com/), which is a spin-off of the University of Genoa (a reasonble portion of their material is available).
 4. There are text books that refer directly to OpenFOAM, for instance: [The Finite Volume Method in Computational Fluid Dynamics, 2016, Moukalled, Mangani, Darwish](https://link.springer.com/book/10.1007/978-3-319-16874-6), and [Notes on Computational Fluid Dynamics: General Principles, 2022, Greenshields, Weller](https://www.amazon.com/Notes-Computational-Fluid-Dynamics-Principles/dp/1399920782).  
 
-* The material of a previous tutorial I held is [here](https://github.com/AtzoriMarco/tutorialOF) (It uses OpenFOAM7 and nothing particulary new can be found there). 
+* The material of a previous tutorial I held is [here](https://github.com/AtzoriMarco/tutorialOF) (It uses OpenFOAM7, nothing particulary new can be found there, but we will use one of the exercises). 
 
-* **TODO**: add thanks to people
+* The examples in [Step 3](./Step_3_scripts_and_AMR) have been prepare as the preliminary step of a research effort on buoyant jets, which was carried out with Prof. A. Abbà, D. Bindoni, and F. Esposito (Polimi, DAER). Their consent to share it is greatly appreciated.
 

@@ -145,7 +145,7 @@ this is fairly complex case study and long to run, but we learn that it is possi
 1. use scripting in dictionaries.
 2. use adaptive mesh refiniment.
 
-* The *small_jet_base* tutorial
+* The *small_jet_base* tutorial 
 
 ## Step 4: multiphase
 
