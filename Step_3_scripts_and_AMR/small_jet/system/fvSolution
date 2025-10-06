@@ -64,7 +64,8 @@ solvers
      	relTol   0;
 	}
 
-	s		//passive scalar solver addressed separately (outside PIMPLE loop)
+//passive scalar solver addressed separately (outside PIMPLE loop)
+    s		
 	{
     	solver         smoothSolver; 
         smoother       symGaussSeidel;

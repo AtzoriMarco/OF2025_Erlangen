@@ -134,6 +134,7 @@ We used our first RANS model:
 2. Find other available turbulence model, test them and discuss how the solution changes.
 
 ## Step 2: snappyHexMesh
+*BlockMesh* is more flexible than it may initially seem (as we shall see in **Step 3**), but it is not enough to work with complex geometries. The default option for that is *snappyHexMesh*.
 
 * We can have a look at:
 ```
@@ -174,22 +175,40 @@ We can run a large eddy simulation. Is it always a good idea?
 2. How should we define a resolution criteria and design a grid?
 3. This is the first case that we run in parallel. Test different decomposition strategies. What is changing with the execution speed?
 
-## Step 3: code stream and AMR
+## Step 3: scripts and AMR
+We have seen so far standard incompressible simulations, using inputs file with standard text. OpenFOAM has a number of tools to help the desing of more complex cases, such as including scripts in dictionaries and adaptive mesh refinement (AMR). 
 
-* We can now start to have a look at a (much) more complex case, do not be afraid:
+* We start with a (much) more complex case, do not be afraid:
 ```
 tutorials/incompressibleVoF/rotatingCube
 ```
 this is relatively long to run, but we can see multiple new capabilities: 
-1. "VoF" stands for "volume of fluid", so this is a multiphase case! 
-2. Starting from the *Allrun* script, we see a set of initialization operations. We can look for the dictionary corresponding to each application.
+1. "VoF" stands for "volume of fluid", so this is a multiphase case! We can compare the three standard dictionary in *system* (*controlDict*, *fvSchemes*, and *fvSolution*) to the same files in the tutorials seen so far.  
+2. In *Allrun* script, we see a set of initialization operations. We can look for the dictionary corresponding to each application.
 3. Looking at the *constant* folder, we see properties of the two different phases, air and water, and the *dynamicMeshDict*, which is being used to carry multiple operations.
+4. What is the meaning of the funny line that appears at the beginning of file for boundary and initial conditions?
+```
+#includeEtc "caseDicts/setConstraintTypes"
+```
+We can check *$FOAM_ETC*.
+5. In the previous tutorials, *blockMeshDict* was used compiling explictitly numerical values. We see here that it can be used defining variables, which reduces the possibility of errors and helps creating more complex grids. 
 
-* **Important!** Just because a capabilty such as this one is shown, do not automatically assume that is the implementation of every feature is actually reliable or at the state of the art, or that an OpenFOAM tutorials shows is as it is supposed to be used. Consider tutorials only as the very starting point of new setup!
+* **Important!** Just because a collection of capabilties such as this one is shown, do not assume that the implementation of every feature is actually reliable or at the state of the art, or that an OpenFOAM tutorials shows is as it is supposed to be used. Consider tutorials only as the very starting point of a new setup!
 
-* We can now have a look at the simpler [small jet tutorial](./Step_3_scripts_and_AMR/small_jet) tutorial. 
+* We can now have a look at the [small jet tutorial](./Step_3_scripts_and_AMR/small_jet) tutorial. This is a simpler case than *rotatingCube*, but still quite a bit is going on:
+1. In *rotatingCube*, we used a VoF approach with two incompressible flows with constant densities (by the way, even if OpenFOAM likes it, do not use the expression "incompressible fluid" lightly). Here we have certain properties that depend on complex constitutive relation *constant/thermophysicalTransport*. 
+2. To set initial conditions, we use another type of "script", the *code stream*. This is more directly link to the structure of the source code than scripting as seen in *blockMeshDict*! (*0/T*)
+3. We include the evolution of a scalar field, *s*. Note how it is done using "post-processing" functions, even though it requires initial conditions and setting of appropriate differentiation scheme and solvers.
 
+This tutorial is also used as a starting point to create [this set up with AMR](./Step_3_scripts_and_AMR/small_jet_AMR), which uses *s* as target field. 
 
+* We can now try to add AMR to the tutorial with the USP induction port: you may see that some changes are not immediately obvious. Which field can be used here to guide AMR? (also, I think AMR does not authomtically works well with multiple refinement levels created with *snappyHexMesh*, but let's try!)
+
+#### Suggested exercises: 
+AMR is a powerful tool, but not without challenges. Create a workflow to estimate the overhead in computational cost for the AMR simulations of a case of your choice:
+1. How can we make a "fair" comparison with a grid that is designed a priori?
+2. What is the most effective and more practical usage for AMR? How can we make a trade-off between refinement frequency, rebalance frequency, cost and accuracy?  
+3. How do we choose the physical quantity to guide the refinement?
 
 ## Step 4: multiphase
 
