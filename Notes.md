@@ -110,13 +110,13 @@ grep -r '#includeFunc'
 ```
 
 Integrate the additional post-processing options, for example:
-1. change name of function output.
-2. add residuals.
-3. add streamlines.
-4. add sampling over a plane.
-5. add probes.
-6. add sampling over a patch.
-7. compute the wall shear-stress. 
+1. Change name of function output.
+2. Add residuals.
+3. Add streamlines.
+4. Add sampling over a plane.
+5. Add probes.
+6. Add sampling over a patch.
+7. Compute the wall shear-stress. 
 
 * We can also use some post-processing utilities (a list is provided [here](https://doc.cfd.direct/openfoam/user-guide-v13/post-processing-functionality#x41-2180007.3)). For instance, let's have a look at: 
 ```
@@ -176,18 +176,20 @@ We can run a large eddy simulation. Is it always a good idea?
 
 ## Step 3: code stream and AMR
 
-* We can now start to have a look at a more complex case.
-
-Let's have a look at:
+* We can now start to have a look at a (much) more complex case, do not be afraid:
 ```
 tutorials/incompressibleVoF/rotatingCube
 ```
-this is fairly complex case study and long to run, but we learn that it is possible to:
+this is relatively long to run, but we can see multiple new capabilities: 
+1. "VoF" stands for "volume of fluid", so this is a multiphase case! 
+2. Starting from the *Allrun* script, we see a set of initialization operations. We can look for the dictionary corresponding to each application.
+3. Looking at the *constant* folder, we see properties of the two different phases, air and water, and the *dynamicMeshDict*, which is being used to carry multiple operations.
 
-1. use scripting in dictionaries.
-2. use adaptive mesh refiniment.
+* **Important!** Just because a capabilty such as this one is shown, do not automatically assume that is the implementation of every feature is actually reliable or at the state of the art, or that an OpenFOAM tutorials shows is as it is supposed to be used. Consider tutorials only as the very starting point of new setup!
 
-* We can now have a look at the [small jet tutorial](./Step_3_scripts_and_AMR/small_jet) tutorial. 
+* We can now have a look at the simpler [small jet tutorial](./Step_3_scripts_and_AMR/small_jet) tutorial. 
+
+
 
 ## Step 4: multiphase
 
