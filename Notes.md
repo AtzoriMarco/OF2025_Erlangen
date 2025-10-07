@@ -128,9 +128,9 @@ foamPostProcess -func flowType
 tutorials/incompressibleFluid/pitzDailySteady
 ```
 
-#### Suggested exercise: 
+#### Suggested exercises: 
 We used our first RANS model:
-1. What is the meaning of time evolution in this kind of simulation? What is the distinction bewtween *pitzDailySteady* and *pitzDaily*?
+1. What is the meaning of time evolution in this kind of simulation? What is the distinction between *pitzDailySteady* and *pitzDaily*?
 2. Find other available turbulence model, test them and discuss how the solution changes.
 
 ## Step 2: snappyHexMesh
@@ -210,16 +210,47 @@ AMR is a powerful tool, but not without challenges. Create a workflow to estimat
 2. What is the most effective and more practical usage for AMR? How can we make a trade-off between refinement frequency, rebalance frequency, cost and accuracy?  
 3. How do we choose the physical quantity to guide the refinement?
 
-## Step 4: multiphase
+## Step 4: multiphase and structure of solver(s)
+We had a look a simulation usinge the VoF solver, we can now have a look at a second way of describing a multiphase flow and take the chance to have a first look at the organization of solvers.
 
-
-* We can also have a look at:
+* We start running the tutorial:
 ```
 tutorials/multiphaseEuler/damBreak4phase
 ```
+We see in *controlDict* that the solver option for this tutorial is: 
+```
+solver          multiphaseEuler;
+```
+By contrast, the same line for the VoF tutorial *rotatingCube* was:
+```
+solver          incompressibleVoF;
+```
+What is the difference between the two? For both, we are using the same executable *foamRun*. Let's start to have a look at the source code.
+
+* Let's start to have a look at the source code: 
+```
+cd $FOAM_INST_DIR/openfoam13
+```
+The structure of the folder is as follows:
+```
+>.  
+>├── **0**   
+>│   ├── p  
+>│   └── U  
+>├── **constant**  
+>│   └── transportProperties  
+>└── **system**  
+>    ├── blockMeshDict  
+>    ├── controlDict  
+>    ├── fvSchemes  
+>    └── fvSolution 
+```
+
+
 
 ## Step 5: particles
 
+* Let's first have a look at some tutorials
 1. We can try:
 
 tutorials/fluid/stackPlume
