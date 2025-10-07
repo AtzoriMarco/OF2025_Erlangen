@@ -1,0 +1,43 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+defaultValues
+{
+    alpha.air       1;
+    alpha.water     0;
+}
+
+zones
+{
+    water
+    {
+        type        sphere;
+        zoneType    cell;
+
+        centre      (0.005 0.005 0); 
+    	radius 	     0.002;
+
+        values
+        {
+            alpha.water     1;
+            alpha.air       0;
+        }
+    }
+
+}
+
+
+// ************************************************************************* //

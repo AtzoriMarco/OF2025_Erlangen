@@ -210,7 +210,7 @@ AMR is a powerful tool, but not without challenges. Create a workflow to estimat
 2. What is the most effective and more practical usage for AMR? How can we make a trade-off between refinement frequency, rebalance frequency, cost and accuracy?  
 3. How do we choose the physical quantity to guide the refinement?
 
-## Step 4: multiphase and structure of solver(s)
+## Step 4: multiphase (and structure of "solvers")
 We had a look a simulation usinge the VoF solver, we can now have a look at a second way of describing a multiphase flow and take the chance to have a first look at the organization of solvers.
 
 * We start running the tutorial:
@@ -242,6 +242,9 @@ The variable *$FOAM_INST_DIR* is keeping track of the installation path. In this
 
 * On the contrary, in OpenFOAM 13 (starting from 11), more generic solvers, such as *foamRun*, are used in combination with different "modules". If we have a look at *$FOAM_SOLVER/foamRun*, we will be able to find the time loop, and calls to solve equations following the PIMPLE algorithm, but there are no governing equations. The governing equations are instead contained in a module. For instance, in **Step 1**, we used as solver module *incompressibleFluid*, which we can find in *$FOAM_MODULES/incompressibleFluid/*.
 
+#### Suggested exercises: 
+When are VoF and multiphase Euler models more appropriate to use?
+
 ## Step 5: particles
 
 * Let's first have a look at some tutorials
@@ -261,4 +264,4 @@ tutorials/multicomponentFluid/verticalChannel
 
 tutorials/incompressibleDenseParticleFluid/cyclone
 
-## Step 6: the structure of the code and programming
+## Step 6: programming
