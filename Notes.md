@@ -231,12 +231,16 @@ What is the difference between the two? For both, we are using the same executab
 ```
 cd /opt/openfoam13
 ```
-The variable *$FOAM_INST_DIR* is keeping track of the installation path. In this folder, the paths of the most relevant directories are all kept in variables:
-1. > *$FOAM_TUTORIALS* (/tutorials), which we have used already.
-2. *$FOAM_*
-3. *$FOAM_*
+The variable *$FOAM_INST_DIR* is keeping track of the installation path. In this folder, the paths of the most relevant directories are all kept in variables, such as:
+1. *$FOAM_TUTORIALS* (alias *tut*), which we have used already, contains the tutorials.
+2. *$FOAM_SRC* (alias *src*), contains a portion of the source code, including most of C++ libraries but excluding the source code of executables.
+4. *$FOAM_APP* (alias *app*), contains another portion of the source code, that includes most of executables.
+5. *$FOAM_SOLVERS* (alias *sol*) and *$FOAM_UTILITIES* (alias *util*) are both directories in *$FOAM_APP*. *$FOAM_SOLVERS* contains solvers, such as *foamRun*, that is used to run simulations. *$FOAM_UTILITIES* contains tools for preprocessing, such as *blockMesh* and *snappyHexMesh*, and postprocessing, such as *foamPostProcess*. These are the directory were you will find the vast majority of "int main" :)
+6. *$FOAM_MODULES* (alias *mod*) is also a directory within *$FOAM_APP*, but it still containes libraries, of a somewhat higher level than those in *$FOAM_SRC*.
 
+* At the very beginning of this tutorial, at **Step 0**, we used *icoFoam*. This was one of the old OpenFOAM solver, and it is now kept in *$FOAM_APP/legacy/incompressible/*. We can have a look at its source code: if we move past C++ syntax, it relatively easy to identify the time loop, a prediction step, and a correction step, as prescribed by the PISO algorithm. In previous OpenFOAM versions (as well as in other distributions), applications with different algorithms were kept separatly (*icoFoam*, *simpleFoam*, *pimpleFoam*, ...). 
 
+* On the contrary, in OpenFOAM 13 (starting from 11), more generic solvers, such as *foamRun*, are used in combination with different "modules". If we have a look at *$FOAM_SOLVER/foamRun*, we will be able to find the time loop, and calls to solve equations following the PIMPLE algorithm, but there are no governing equations. The governing equations are instead contained in a module. For instance, in **Step 1**, we used as solver module *incompressibleFluid*, which we can find in *$FOAM_MODULES/incompressibleFluid/*.
 
 ## Step 5: particles
 
