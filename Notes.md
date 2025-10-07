@@ -232,19 +232,18 @@ What is the difference between the two? For both, we are using the same executab
 cd $FOAM_INST_DIR/openfoam13
 ```
 The structure of the folder is as follows:
-```
-.  
-├── **0**   
-│   ├── p  
-│   └── U  
-├── **constant**  
-│   └── transportProperties  
-└── **system**  
-    ├── blockMeshDict  
-    ├── controlDict  
-    ├── fvSchemes  
-    └── fvSolution 
-```
+>.  
+>├── **0**   
+>│   ├── p  
+>│   └── U  
+>├── **constant**  
+>│   └── transportProperties  
+>└── **system**  
+>    ├── blockMeshDict  
+>    ├── controlDict  
+>    ├── fvSchemes  
+>    └── fvSolution 
+
 
 
 
