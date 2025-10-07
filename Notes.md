@@ -229,21 +229,12 @@ What is the difference between the two? For both, we are using the same executab
 
 * Let's start to have a look at the source code: 
 ```
-cd $FOAM_INST_DIR/openfoam13
+cd /opt/openfoam13
 ```
-The structure of the folder is as follows:
->.  
->├── **0**   
->│   ├── p  
->│   └── U  
->├── **constant**  
->│   └── transportProperties  
->└── **system**  
->    ├── blockMeshDict  
->    ├── controlDict  
->    ├── fvSchemes  
->    └── fvSolution 
-
+The variable *$FOAM_INST_DIR* is keeping track of the installation path. In this folder, the paths of the most relevant directories are all kept in variables:
+1. > *$FOAM_TUTORIALS* (/tutorials), which we have used already.
+2. *$FOAM_*
+3. *$FOAM_*
 
 
 
