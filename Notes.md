@@ -211,7 +211,7 @@ AMR is a powerful tool, but not without challenges. Create a workflow to estimat
 3. How do we choose the physical quantity to guide the refinement?
 
 ## Step 4: multiphase (and structure of "solvers")
-We had a look a simulation usinge the VoF solver, we can now have a look at a second way of describing a multiphase flow and take the chance to have a first look at the organization of solvers.
+We can now have a look at a second way of describing a multiphase flow, and take it as an excuse to discuss how "solvers" are organized.
 
 * We start running the tutorial:
 ```
@@ -227,7 +227,7 @@ solver          incompressibleVoF;
 ```
 What is the difference between the two? For both, we are using the same executable *foamRun*. Let's start to have a look at the source code.
 
-* Let's start to have a look at the source code: 
+* Let's (try to) have a look at the source code: 
 ```
 cd /opt/openfoam13
 ```
@@ -240,10 +240,21 @@ The variable *$FOAM_INST_DIR* is keeping track of the installation path. In this
 
 * At the very beginning of this tutorial, at **Step 0**, we used *icoFoam*. This was one of the old OpenFOAM solver, and it is now kept in *$FOAM_APP/legacy/incompressible/*. We can have a look at its source code: if we move past C++ syntax, it relatively easy to identify the time loop, a prediction step, and a correction step, as prescribed by the PISO algorithm. In previous OpenFOAM versions (as well as in other distributions), applications with different algorithms were kept separatly (*icoFoam*, *simpleFoam*, *pimpleFoam*, ...). 
 
-* On the contrary, in OpenFOAM 13 (starting from 11), more generic solvers, such as *foamRun*, are used in combination with different "modules". If we have a look at *$FOAM_SOLVER/foamRun*, we will be able to find the time loop, and calls to solve equations following the PIMPLE algorithm, but there are no governing equations. The governing equations are instead contained in a module. For instance, in **Step 1**, we used as solver module *incompressibleFluid*, which we can find in *$FOAM_MODULES/incompressibleFluid/*.
+* On the contrary, in OpenFOAM 13 (starting from 11), more generic solvers, such as *foamRun*, are used in combination with different "modules". If we have a look at *$FOAM_SOLVER/foamRun*, we will be able to find the time loop, and calls to solve equations following the PIMPLE algorithm, but there are no governing equations. The governing equations are instead contained in a module. For instance, in **Step 1**, we used as solver module *incompressibleFluid*, which we can find in *$FOAM_MODULES/incompressibleFluid/*. Can we determined the set of governing equations for the multiphase solvers we have encountered so far? Their description can be found in: 
+```
+$FOAM_MODULES/incompressibleVoF/incompressibleVoF.H
+```
+and at: 
+```
+$FOAM_MODULES/multiphaseEuler/multiphaseEuler.H
+
+```
+
+* : We can now select one of the two and try to create a new case, a "droplet" falling in a cavity! 
+
 
 #### Suggested exercises: 
-When are VoF and multiphase Euler models more appropriate to use?
+
 
 ## Step 5: particles
 
