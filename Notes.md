@@ -254,14 +254,14 @@ $FOAM_MODULES/multiphaseEuler/multiphaseEuler.H
 
 
 #### Suggested exercises: 
-
+* Describe the difference between *incompressibleVoF.H* and *multiphaseEuler.H*. Can you identify the source code that contains the governing equations? 
+* Make a plan to carry out a possible validation or convergence assement of the droplet falling in a cavity. 
+* What are the dimensionless number that govern that falling droplet?
 
 ## Step 5: particles
 
-* Let's first have a look at some tutorials
-1. We can try:
-
-tutorials/fluid/stackPlume
+* Let's first have a look at some tutorials:
+1. > tutorials/fluid/stackPlume
 
 2. We can try:
 
