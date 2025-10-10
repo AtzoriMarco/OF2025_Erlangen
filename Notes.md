@@ -256,23 +256,14 @@ $FOAM_MODULES/multiphaseEuler/multiphaseEuler.H
 #### Suggested exercises: 
 * Describe the difference between *incompressibleVoF.H* and *multiphaseEuler.H*. Can you identify the source code that contains the governing equations? 
 * Make a plan to carry out a possible validation or convergence assement of the droplet falling in a cavity. 
-* What are the dimensionless number that govern that falling droplet?
+* What are the dimensionless number that govern the falling droplet?
 
 ## Step 5: particles
+* Lagrangian can be described by multiple solver modules or solver (applications). We can have a look at the following tutorials:
+1. > tutorials/multicomponentFluid/verticalChannel
+2. > tutorials/incompressibleDenseParticleFluid/column/
+3. > tutorials/incompressibleDenseParticleFluid/cyclone/
 
-* Let's first have a look at some tutorials:
-1. > tutorials/fluid/stackPlume
-
-2. We can try:
-
-tutorials/incompressibleFluid/TJunction
-
-3. We can try (run in parallel)
-
-tutorials/multicomponentFluid/verticalChannel
-
-4. We can try: 
-
-tutorials/incompressibleDenseParticleFluid/cyclone
+* We can now make particles falling in a cavity!
 
 ## Step 6: programming
