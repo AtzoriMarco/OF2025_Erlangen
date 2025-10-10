@@ -264,6 +264,12 @@ $FOAM_MODULES/multiphaseEuler/multiphaseEuler.H
 2. > tutorials/incompressibleDenseParticleFluid/column/
 3. > tutorials/incompressibleDenseParticleFluid/cyclone/
 
+You can use *foamToVTK* for visualization.
+
 * We can now make particles falling in a cavity!
 
 ## Step 6: programming
+
+
+
+#### Suggested exercises: 
