@@ -268,8 +268,15 @@ You can use *foamToVTK* for visualization.
 
 * We can now make particles falling in a cavity!
 
+#### Suggested exercises: 
+
+
 ## Step 6: programming
 
+* We can try to create a new solver: let's just change name at *foamRun*.
 
+* We can also try to create a new solver module: let's just change name at *incompressibleFluid*.
+
+* We can also have a look at the IBM implementation created in the 2023 edition of the CFD course at Chalmers, [here](https://www.tfd.chalmers.se/~hani/kurser/OS_CFD/#YEAR_2023), and at [this](http://dx.doi.org/10.17632/hcvtddjngv.1), which a previous version that I could test on OpenFOAM 6 (see supplementary data).
 
 #### Suggested exercises: 
